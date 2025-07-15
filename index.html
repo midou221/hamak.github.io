@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قارئ مانجا عربي - متجر التطبيقات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .app-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .app-info {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-details h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.5em;
+        }
+
+        .rating-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .download-section {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn.apk {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .download-btn.apk:hover {
+            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .download-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .screenshot {
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .feature-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .reviews {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .review {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .app-description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .app-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .app-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+            
+            .app-details h1 {
+                font-size: 2em;
+            }
+            
+            .screenshots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- App Header -->
+        <div class="app-header">
+            <div class="app-info">
+                <div class="app-icon">📚</div>
+                <div class="app-details">
+                    <h1>قارئ مانجا عربي</h1>
+                    <div class="app-meta">
+                        <span class="meta-item">📱 الترفيه</span>
+                        <span class="meta-item">🏢 Hamako</span>
+                        <span class="meta-item">📅 الإصدار 2.0.3.11.11</span>
+                        <span class="meta-item">⭐ 4.41/5</span>
+                    </div>
+                    <div class="rating">
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <span class="rating-text">4.41 (6,300+ تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="download-section">
+                <div class="download-options">
+                    <!-- <a href="https://play.google.com/store/apps/details?id=org.hamak.mangareader" 
+                       class="download-btn" 
+                       target="_blank"
+                       onclick="trackDownload('playstore')">
+                        <span>🏪</span> تحميل من متجر جوجل
+                    </a> -->
+                    <a href="https://example.com/manga-reader.apk" 
+                       class="download-btn apk" 
+                       onclick="downloadAPK(event)">
+                        <span>📱</span> تحميل APK مباشر
+                    </a>
+                </div>
+                <div class="meta-item">🔒 آمن ومجاني</div>
+            </div>
+        </div>
+
+        <!-- App Statistics -->
+        <div class="content-section">
+            <h2 class="section-title">📊 إحصائيات التطبيق</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">100K+</div>
+                    <div class="stat-label">عمليات التحميل</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.41</div>
+                    <div class="stat-label">تقييم المستخدمين</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6.3K+</div>
+                    <div class="stat-label">تقييمات المستخدمين</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12MB</div>
+                    <div class="stat-label">حجم التطبيق</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Description -->
+        <div class="content-section">
+            <h2 class="section-title">📝 وصف التطبيق</h2>
+            <div class="app-description">
+                قارئ مانجا عربي هو أفضل تطبيق عربي لقراءة المانجا والمانهوا، يتميز بواجهة سهلة الاستخدام وتصميم بسيط يجعل تجربة القراءة ممتعة ومريحة. يوفر التطبيق مجموعة واسعة من المحتوى العربي المترجم بجودة عالية، مع إمكانية التحميل للقراءة بدون إنترنت.
+            </div>
+        </div>
+
+        <!-- App Screenshots -->
+        <div class="content-section">
+            <h2 class="section-title">📸 لقطات الشاشة</h2>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <div>
+                        📱<br>
+                        الشاشة الرئيسية<br>
+                        قائمة المانجا
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <div>
+                        📖<br>
+                        واجهة القراءة<br>
+                        تجربة سلسة
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <div>
+                        💾<br>
+                        صفحة التحميل<br>
+                        قراءة بدون إنترنت
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <div>
+                        ⚙️<br>
+                        الإعدادات<br>
+                        تخصيص التطبيق
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Features -->
+        <div class="content-section">
+            <h2 class="section-title">✨ المميزات الرئيسية</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">مكتبة شاملة</div>
+                    <div>مجموعة واسعة من المانجا والمانهوا المترجمة للعربية</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💾</div>
+                    <div class="feature-title">التحميل للقراءة بدون إنترنت</div>
+                    <div>إمكانية تحميل الفصول للقراءة في أي وقت</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">تصميم بسيط وأنيق</div>
+                    <div>واجهة مستخدم سهلة الاستخدام ومريحة للعين</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">نسخ احتياطي للبيانات</div>
+                    <div>حفظ واستيراد قوائم القراءة والإعدادات</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-title">بحث متقدم</div>
+                    <div>البحث السريع والفعال في قاعدة البيانات</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">قوائم مرتبة</div>
+                    <div>تنظيم المحتوى بطريقة سهلة ومنطقية</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Reviews -->
+        <div class="content-section">
+            <h2 class="section-title">💬 آراء المستخدمين</h2>
+            <div class="reviews">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="user-avatar">م</div>
+                        <div>
+                            <div style="font-weight: bold;">محمد الأمين نافع</div>
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>أعلن أننا لا نستطيع العيش بدون هذا التطبيق بعد الآن👏. إنه أفضل قارئ مانجا عربي رأيته على الإطلاق.</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <div class="user-avatar">ع</div>
+                        <div>
+                            <div style="font-weight: bold;">عبد الله بن شيخ</div>
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>التطبيق رائع بشكل عام، لكن أحياناً توجد مشاكل في تحميل بعض الفصول. آمل أن يتم حل هذه المشكلة قريباً.</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <div class="user-avatar">ك</div>
+                        <div>
+                            <div style="font-weight: bold;">كريم خالد</div>
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>أتمنى لو تم تحسين واجهة المستخدم أكثر، وأيضاً تحسين جودة التحميل من ناحية ترتيب التحميل.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Information -->
+        <div class="content-section">
+            <h2 class="section-title">ℹ️ معلومات إضافية</h2>
+            <div class="app-info-grid">
+                <div class="info-item">
+                    <span class="info-label">المطور</span>
+                    <span class="info-value">Hamako</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">الفئة</span>
+                    <span class="info-value">الترفيه</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">الإصدار الحالي</span>
+                    <span class="info-value">2.0.3.11.11</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">حجم التطبيق</span>
+                    <span class="info-value">12 MB</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">الحد الأدنى للنظام</span>
+                    <span class="info-value">Android 5.0+</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">التقييم العمري</span>
+                    <span class="info-value">للجميع</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadAPK(event) {
+            event.preventDefault();
+            
+            // إضافة تأثير انيميشن للزر
+            const btn = event.target.closest('.download-btn');
+            btn.style.transform = 'scale(0.95)';
+            btn.innerHTML = '<span>⏳</span> جاري التحضير...';
+            
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+                btn.innerHTML = '<span>📥</span> بدء التحميل...';
+                
+                // هنا ضع رابط APK الفعلي للتطبيق
+                const apkUrl = 'https://example.com/manga-reader.apk';
+                
+                // إنشاء رابط التحميل
+                const link = document.createElement('a');
+                link.href = apkUrl;
+                link.download = 'manga-reader.apk';
+                link.click();
+                
+                // إظهار رسالة نجاح
+                showDownloadMessage('تم بدء تحميل ملف APK');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span>📱</span> تحميل APK مباشر';
+                }, 3000);
+            }, 1000);
+        }
+
+        function trackDownload(source) {
+            // تتبع التحميلات
+            console.log('تم تحميل التطبيق من:', source);
+            
+            const btn = event.target.closest('.download-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<span>✅</span> تم فتح المتجر';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
+
+        function showDownloadMessage(message) {
+            // إنشاء رسالة تنبيه
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #4CAF50, #45a049);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-weight: bold;
+                animation: slideIn 0.3s ease;
+            `;
+            messageDiv.textContent = message;
+            
+            // إضافة الرسالة للصفحة
+            document.body.appendChild(messageDiv);
+            
+            // إزالة الرسالة بعد 3 ثوانٍ
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // إضافة CSS للانيميشن
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // تأثيرات تفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير hover للصور
+            const screenshots = document.querySelectorAll('.screenshot');
+            screenshots.forEach(screenshot => {
+                screenshot.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(1deg)';
+                });
+                screenshot.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // تأثير scroll للعناصر
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
