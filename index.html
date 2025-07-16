@@ -3,21 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ويب مانجا - WebManga</title>
-
-        <!-- Basic favicon -->
+    
+    <!-- SEO Meta Tags -->
+    <title>ويب مانجا - أفضل تطبيق لقراءة المانجا العربية مجاناً | WebManga</title>
+    <meta name="description" content="حمل ويب مانجا مجاناً - أفضل تطبيق اندرويد لقراءة المانجا والمانهوا العربية. خوارزمية ذكية لإضافة أي موقع مانجا، تحميل للقراءة بدون انترنت، واجهة احترافية سهلة الاستخدام.">
+    <meta name="keywords" content="ويب مانجا, مانجا عربية, قراءة مانجا, تطبيق مانجا, تحميل مانجا, مانهوا عربية, قارئ مانجا, WebManga, manga reader arabic, android manga app">
+    <meta name="author" content="WebManga Team">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Arabic">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="ويب مانجا - أفضل تطبيق لقراءة المانجا العربية مجاناً">
+    <meta property="og:description" content="حمل ويب مانجا مجاناً - تطبيق اندرويد متقدم لقراءة المانجا والمانهوا العربية مع خوارزمية ذكية لإضافة أي موقع مانجا">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+    <meta property="og:site_name" content="ويب مانجا - WebManga">
+    <meta property="og:locale" content="ar_AR">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ويب مانجا - أفضل تطبيق لقراءة المانجا العربية مجاناً">
+    <meta name="twitter:description" content="حمل ويب مانجا مجاناً - تطبيق اندرويد متقدم لقراءة المانجا والمانهوا العربية">
+    <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
+    
+    <!-- Mobile App Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ويب مانجا">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <!-- PNG favicon (recommended) -->
     <link rel="icon" type="image/png" href="favicon.png">
-    
-    <!-- Multiple sizes for different devices -->
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-    
-    <!-- Apple touch icon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "ويب مانجا",
+        "alternateName": "WebManga",
+        "description": "تطبيق اندرويد لقراءة المانجا يوفر خوارزمية ذكية تسمح لك بإضافة اي موقع لمصادر التطبيق، ما يمنحك تجربة مميزة وأكثر سلاسة",
+        "operatingSystem": "Android",
+        "applicationCategory": "Entertainment",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.2",
+            "ratingCount": "1000"
+        },
+        "downloadUrl": "https://github.com/midou221/WebManga/releases/download/v1.0/WebManga-release-1.0.0.apk",
+        "author": {
+            "@type": "Organization",
+            "name": "WebManga Team"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "WebManga Team"
+        }
+    }
+    </script>
     
     <style>
         * {
@@ -44,11 +101,11 @@
             margin-bottom: 60px;
         }
 
-      .logo {
+        .logo {
             width: 100px;
             height: 100px;
             background: #007bff;
-            border-radius: 25px; /* Curved corners */
+            border-radius: 25px;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
@@ -56,14 +113,14 @@
             font-size: 40px;
             color: white;
             font-weight: bold;
-            overflow: hidden; /* Important for image clipping */
+            overflow: hidden;
         }
         
         .logo img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures image fits perfectly */
-            border-radius: 25px; /* Same as container */
+            object-fit: cover;
+            border-radius: 25px;
         }
 
         h1 {
@@ -133,6 +190,15 @@
 
         .feature-item {
             text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
         }
 
         .feature-icon {
@@ -163,6 +229,9 @@
 
         .stat-item {
             padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .stat-number {
@@ -199,6 +268,22 @@
             border: 1px solid #dee2e6;
         }
 
+        /* SEO Improvements */
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px 15px;
@@ -220,86 +305,100 @@
     </style>
 </head>
 <body>
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb container">
+        <a href="/">الرئيسية</a> > <span>ويب مانجا - تطبيق قراءة المانجا</span>
+    </nav>
+
     <div class="container">
         <header>
             <div class="logo">
-    <img src="app-icon.png" alt="ويب مانجا" style="width: 100%; height: 100%; object-fit: contain;">
-</div>
-            <h1>ويب مانجا</h1>
-        
+                <img src="app-icon.png" alt="ويب مانجا - أفضل تطبيق لقراءة المانجا العربية" width="100" height="100">
+            </div>
+            <h1>ويب مانجا - WebManga</h1>
+            <p class="subtitle">أفضل تطبيق اندرويد لقراءة المانجا والمانهوا العربية مجاناً</p>
         </header>
 
-        <p class="description">
-        تطبيق اندرويد لقراءة المانجا يوفر خوارزمية ذكية تسمح لك بإضافة اي موقع لمصادر التطبيق، ما يمنحك تجربة مميزة وأكثر سلاسة.
-        </p>
+        <main>
+            <section class="description">
+                <p>
+                    تطبيق اندرويد لقراءة المانجا يوفر خوارزمية ذكية تسمح لك بإضافة اي موقع لمصادر التطبيق، ما يمنحك تجربة مميزة وأكثر سلاسة في قراءة المانجا والمانهوا العربية والأجنبية.
+                </p>
+            </section>
 
-        <div class="download-section">
-            <a href="https://github.com/midou221/WebManga/releases/download/v1.0/WebManga-release-1.0.0.apk" class="download-btn" target="_blank">
-            
-               تحميل مباشرة APK
-            </a>
-        </div>
+            <section class="download-section">
+                <a href="https://github.com/midou221/WebManga/releases/download/v1.0/WebManga-release-1.0.0.apk" 
+                   class="download-btn" 
+                   target="_blank"
+                   rel="noopener"
+                   aria-label="تحميل تطبيق ويب مانجا مجاناً">
+                    <span>📱</span>
+                    تحميل مباشرة APK
+                </a>
+            </section>
 
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">10K+</div>
-                <div class="stat-label">تحميل</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">4.2★</div>
-                <div class="stat-label">تقييم</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">غير محدود</div>
-                <div class="stat-label">عنوان مانجا</div>
-            </div>
-        </div>
-
-        <div class="features-section">
-            <h2 class="features-title">ما الذي يمكن لويب مانجا فعله؟</h2>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">🌐</span>
-                    <h3 class="feature-title">دعم مصادر متعددة</h3>
-                    <p class="feature-desc">يمنحك الوصول لمعظم مواقع المانجا العربية أولا والاجنبية</p>
+            <section class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">تحميل</div>
                 </div>
-
-                <div class="feature-item">
-                    <span class="feature-icon">⚙️</span>
-                    <h3 class="feature-title">إعدادات القراءة المتقدمة</h3>
-                    <p class="feature-desc">اجعل القراءة أكثر راحة مع إعدادات مختلفة للقارئ</p>
+                <div class="stat-item">
+                    <div class="stat-number">4.2★</div>
+                    <div class="stat-label">تقييم</div>
                 </div>
-
-                <div class="feature-item">
-                    <span class="feature-icon">🔍</span>
-                    <h3 class="feature-title">البحث السريع</h3>
-                    <p class="feature-desc">ابحث عن المانجا المهتمة بها بسرعة وسهولة</p>
+                <div class="stat-item">
+                    <div class="stat-number">غير محدود</div>
+                    <div class="stat-label">عنوان مانجا</div>
                 </div>
+            </section>
 
-                <div class="feature-item">
-                    <span class="feature-icon">⬇️</span>
-                    <h3 class="feature-title">تحميل المانجا والمانهوا</h3>
-                    <p class="feature-desc">يمكنك بسهولة تحميل عشرات الفصول وقراءتها من دون انترنت</p>
+            <section class="features-section">
+                <h2 class="features-title">ما الذي يمكن لويب مانجا فعله؟</h2>
+                
+                <div class="features-grid">
+                    <article class="feature-item">
+                        <span class="feature-icon">🌐</span>
+                        <h3 class="feature-title">دعم مصادر متعددة</h3>
+                        <p class="feature-desc">يمنحك الوصول لمعظم مواقع المانجا العربية أولاً والأجنبية مع خوارزمية ذكية لإضافة أي موقع جديد</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <span class="feature-icon">⚙️</span>
+                        <h3 class="feature-title">إعدادات القراءة المتقدمة</h3>
+                        <p class="feature-desc">اجعل القراءة أكثر راحة مع إعدادات مختلفة للقارئ، الوضع الليلي، وضع الويبتون، الخ</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <span class="feature-icon">🔍</span>
+                        <h3 class="feature-title">البحث السريع والذكي</h3>
+                        <p class="feature-desc">ابحث عن المانجا المفضلة لديك بسرعة وسهولة عبر جميع المصادر المتاحة</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <span class="feature-icon">⬇️</span>
+                        <h3 class="feature-title">تحميل المانجا والمانهوا</h3>
+                        <p class="feature-desc">يمكنك بسهولة تحميل عشرات الفصول وقراءتها من دون انترنت في أي وقت</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <span class="feature-icon">🔖</span>
+                        <h3 class="feature-title">المفضلة والتتبع</h3>
+                        <p class="feature-desc">تتبع تقدمك في القراءة وحفظ المانجا المفضلة لديك مع نظام تنبيهات للفصول الجديدة</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <h3 class="feature-title">واجهة احترافية وسهلة</h3>
+                        <p class="feature-desc">تصميم نظيف وسهل الاستخدام مع دعم كامل للغة العربية والاتجاه من اليمين لليسار</p>
+                    </article>
                 </div>
+            </section>
+        </main>
 
-                <div class="feature-item">
-                    <span class="feature-icon">🔖</span>
-                    <h3 class="feature-title">المفضلة والتتبع</h3>
-                    <p class="feature-desc">تتبع تقدمك وحفظ المانجا المفضلة لديك</p>
-                </div>
-
-                <div class="feature-item">
-                    <span class="feature-icon">📱</span>
-                    <h3 class="feature-title">واجهة احترافية</h3>
-                    <p class="feature-desc">تصميم نظيف وسهل الاستخدام</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>تطبيق مجاني</p>
-        </div>
+        <footer class="footer">
+            <p>تطبيق ويب مانجا - مجاني ومفتوح المصدر</p>
+            <p>جميع الحقوق محفوظة © 2024 WebManga Team</p>
+        </footer>
     </div>
 </body>
 </html>
